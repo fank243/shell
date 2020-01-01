@@ -1,0 +1,9 @@
+*.log
+*.tar.gz
+nginx/logs/*
+redis/data/*
+mysql/data/*
+mongo/data/*
+
+*
+!.gitignore
