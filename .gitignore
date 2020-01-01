@@ -1,0 +1,9 @@
+.idea/
+.vscode/
+*.logs
+*.tar.gz
+*.gz
+data/
+
+# 将空目录纳入进去
+!.gitignore
