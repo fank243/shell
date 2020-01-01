@@ -6,7 +6,8 @@
 *.tar.gz
 *.gz
 
-data/.gitignore
+data/
+logs/
 
 # 将空目录纳入进去
 !.gitignore
