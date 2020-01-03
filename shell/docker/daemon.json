@@ -1,0 +1,6 @@
+{
+    "registry-mirrors": ["https://hwnlrgod.mirror.aliyuncs.com"],
+    "log-driver":"json-file",
+    "log-opts":{"max-size":"500m", "max-file":"3"}
+}
+  

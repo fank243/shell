@@ -7,4 +7,8 @@ sudo apt-get install docker-ce
 
 docker -v
 
+mkdir -p /etc/docker
+
+cp $dir/damemon.json /etc/docker
+
 echo "docker install finished ..."
