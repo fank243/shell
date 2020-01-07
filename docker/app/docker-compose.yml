@@ -1,0 +1,31 @@
+version: '3.7'
+services:
+  admin:
+    build:
+      context: ./
+      args: 
+        - JAR_PATH=lib/antstar-admin-1.0.0.jar
+      dockerfile: dockerfile/Dockerfile
+    image: antstar/admin:1.0.0
+    hostname: admin
+    container_name: admin
+#    network_mode: "host"
+    restart: on-failure
+    environment:
+      - SPRING_ACTIVE=test
+    volumes:
+      - ./lib/antstar-admin-1.0.0.jar:/app/app.jar
+      - ./config/admin:/app/config
+      - ./logs/admin:/app/logs
+    ports:
+      - "8900:8900"
+    networks:
+      antstar-network:
+        ipv4_address: 172.20.0.2
+      
+networks:
+  antstar-network:
+    name: antstar-network # 网络名称
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16 # IP4网段
