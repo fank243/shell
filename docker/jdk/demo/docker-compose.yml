@@ -1,13 +1,16 @@
 version: '3.7'
 services:
   demo:
-    image: fank243:jdk:1.8.0_202
+    build:
+        context: ./
+        dockerfile: Dockerfile
+    image: fank243/demo:1.0.0
     hostname: demo
     container_name: demo
     volumes:
       - ./demo-1.0.0.jar:/app/app.jar
       - ./config:/app/config
+      - ./lib:/app/lib
       - ./logs:/app/logs
-    environment: java -Dfile.encoding=UTF8 -Duser.timezone=GMT+08 -jar app.jar --spring.profiles.active=test
     ports:
       - "8900:8900"
