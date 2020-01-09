@@ -6,8 +6,6 @@
 *.tar.gz
 *.gz
 
-data/
-logs/
 
 # 将空目录纳入进去
 !.gitignore
