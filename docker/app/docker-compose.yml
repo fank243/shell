@@ -21,12 +21,9 @@ services:
     ports:
       - "8900:8900"
     networks:
-      antstar-network:
-        ipv4_address: 172.20.0.2
+      antstar-network
       
 networks:
   antstar-network:
     name: antstar-network # 网络名称
-    ipam:
-      config:
-        - subnet: 172.20.0.0/16 # IP4网段
+    driver: bridge

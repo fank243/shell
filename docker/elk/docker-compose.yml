@@ -3,7 +3,7 @@ services:
   elasticsearch:
     hostname: elasticsearch
     container_name: elasticsearch
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.5.1
+    image: elasticsearch:7.5.1
     restart: unless-stopped
     environment:
       ES_JAVA_OPTS: "-Xmx256m -Xms256m"
@@ -14,6 +14,8 @@ services:
     ports:
       - 9200:9200
       - 9300:9300
+    networks:
+      docker-network
 
   logstash:
     hostname: logstash
@@ -30,6 +32,8 @@ services:
       - 5000:5000
     links:
       - elasticsearch
+    networks:
+      docker-network
 
   kibana:
     hostname: kibana
@@ -44,6 +48,8 @@ services:
       - 5601:5601
     links:
       - elasticsearch
+    networks:
+      docker-network
 
   filebeat:
     hostname: filebeat
@@ -56,3 +62,10 @@ services:
       - ./filebeat/conf/filebeat.yml:/usr/share/filebeat/filebeat.yml    # 配置文件
     links:
       - logstash
+    networks:
+      docker-network
+      
+networks:
+  docker-network:
+    name: docker-network # 网络名称
+    driver: bridge
