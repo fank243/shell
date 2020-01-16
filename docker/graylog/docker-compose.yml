@@ -1,0 +1,30 @@
+version: '3.7'
+services:
+  # Graylog: https://hub.docker.com/r/graylog/graylog/      
+  graylog:
+    hostname: graylog
+    image: graylog/graylog:3.1
+    container_name: graylog
+    restart: unless-stopped
+    volumes:
+      # Mount local configuration directory into Docker container
+      - ./conf:/usr/share/graylog/data/config
+      - ./data:/usr/share/graylog/data/journal
+    networks:
+      - docker-network
+    ports:
+      # Graylog web interface and REST API
+      - 9000:9000
+      # Syslog TCP
+      - 1514:1514
+      # Syslog UDP
+      - 1514:1514/udp
+      # GELF TCP
+      - 12201:12201
+      # GELF UDP
+      - 12201:12201/udp
+
+networks:
+  docker-network:
+    name: docker-network
+    driver: bridge

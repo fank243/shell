@@ -2,7 +2,6 @@ db.createUser({
     user: "root",
     pwd: "root",
     roles: [{
-        role: "readWrite",
-        db: "yapi"
+        role: "readWrite"
     }]
 });

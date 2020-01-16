@@ -6,7 +6,6 @@ services:
     container_name: mongo
     restart: unless-stopped
     #environment:
-     # - MONGO_INITDB_DATABASE=yapi
      # - MONGO_INITDB_ROOT_USERNAME=root
      # - MONGO_INITDB_ROOT_PASSWORD=root
     volumes:
@@ -19,7 +18,7 @@ services:
       - docker-network
 
 networks:
-  antstar:
+  docker-network:
     name: docker-network
     driver: bridge
       
